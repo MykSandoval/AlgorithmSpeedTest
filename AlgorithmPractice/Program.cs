@@ -16,16 +16,14 @@ namespace AlgorithmPractice
 
         public static void Main(string[] args)
         {
-            //  int[] Arr = { 2, 4, 3, 5, 10, 8, 9, 15, 20, 17, 16, 1, 6, 14, 19, 11, 13, 18, 7, 12 };
-            //  Console.Write("Which Algorithm is Fastest? Here is your input method" + Arr);
-            string[] Demension = { };
-            XO(Demension, 4, 8);
-            //Waiting();
-            //ThreadCount(Arr);
-            //Waiting();
-            //ThreadCount2(Arr);
-            //InsertionSort(Arr);
-            //SelectionSort(Arr);
+            int[] Arr = { 2, 4, 3, 5, 10, 8, 9, 15, 20, 17, 16, 1, 6, 14, 19, 11, 13, 18, 7, 12 };
+            Console.Write("Which Algorithm is Fastest? Here is your input method");
+          
+            Waiting();
+            ThreadCount(Arr);
+            Waiting();
+            ThreadCount2(Arr);
+           
             Console.ReadKey();
             
         }
@@ -41,25 +39,22 @@ namespace AlgorithmPractice
         {
 
             Stopwatch Select = Stopwatch.StartNew();
-            //Thread T1 = new Thread(new ThreadStart(() => SelectionSort(Arr)));
-            //T1.Start();
+          
             SelectionSort(Arr);
             Select.Stop();
 
             Console.Write(String.Format(" Time taken: {0}ms, ", Select.Elapsed.TotalMilliseconds));
 
-
-
-
         }
         public static void ThreadCount2(int[] Arr)
         {
             Stopwatch Insert = Stopwatch.StartNew();
-            //Thread T2 = new Thread(Thread.BeginThreadAffinity);
+            
             InsertionSort(Arr);
             Insert.Stop();
             Console.Write(" Time taken: {0}ms, ", Insert.Elapsed.TotalMilliseconds);
         }
+        //The waiting method is to simulate a loading time
         public static void Waiting()
         {
 
@@ -68,7 +63,7 @@ namespace AlgorithmPractice
             Console.WriteLine("Calculating Please Wait..");
             Parallel.Invoke(() => Thread.Sleep(Co),
             () => For());
-         
+         //using parrelel programming we can invoke two methods running at the same time. 
 
         }
         public static void For()
@@ -83,38 +78,7 @@ namespace AlgorithmPractice
 
         }
 
-   
-
-        public static void drawTextProgressBar(string stepDescription, double progress, double total)
-        {
-            int totalChunks = 30;
-
-            //draw empty progress bar
-            Console.CursorLeft = 0;
-            Console.Write("["); //start
-            Console.CursorLeft = totalChunks + 1;
-            Console.Write("]"); //end
-            Console.CursorLeft = 1;
-
-            double pctComplete = Convert.ToDouble(progress) / total;
-            int numChunksComplete = Convert.ToInt16(totalChunks * pctComplete);
-
-            //draw completed chunks
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.Write("".PadRight(numChunksComplete));
-
-            //draw incomplete chunks
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.Write("".PadRight(totalChunks - numChunksComplete));
-
-            //draw totals
-            Console.CursorLeft = totalChunks + 5;
-            Console.BackgroundColor = ConsoleColor.Black;
-
-            string output = progress.ToString() + " of " + total.ToString();
-            Console.Write(output.PadRight(15) + stepDescription); //pad the output so when changing from 3 to 4 digits we avoid text shifting
-        }
-
+        //start of the algorithmic Sorts
         public static void SelectionSort(int[] arr)
         {
             Console.WriteLine("\n Selection Sort: ");
@@ -161,33 +125,7 @@ namespace AlgorithmPractice
                 Console.Write(val + ", ");
             }
         }
-        public static void XO(string[] XO, int Length, int Width)
-        {
 
-            string x = "x";
-            string o = "o";
-            
-            for (int p = 0; p < Length; p++)
-            {
-                for (int i = 0; i < Width; i++)
-                {
-
-
-                    if ((XO[i] == "o"))
-                        {
-                        x.ToArray();
-                        }
-                    else if (XO[i] == "x")
-                        {
-                        o.ToArray();
-                        }
-
-                }
-                Console.WriteLine(XO, XO.Reverse());
-               string[] XO2 =  XO.Reverse();
-            }
-        }
- 
         
     }
 
